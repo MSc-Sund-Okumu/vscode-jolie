@@ -80,6 +80,9 @@
 					"type": "number",
 					"description": "The TCP port used by the Jolie Language Server",
 					"default": 9743
+				},
+				"vscode-jolie.trace.server": {
+					"default": "verbose"
 				}
 			}
 		}
@@ -94,6 +97,7 @@
 		"watch": "tsc -b -w"
 	},
 	"dependencies": {
+		"@jolie/languageserver": "file:../languageserver",
 		"execa": "^2.1.0",
 		"semver": "^6.3.0",
 		"vsce": "^2.9.1",

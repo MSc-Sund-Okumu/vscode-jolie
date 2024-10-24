@@ -92,12 +92,22 @@ export async function activate(context: ExtensionContext) {
 			command = 'cmd.exe'
 			args = ['/C', 'npx', '--package=@jolie/languageserver@'+languageServerVersion, 'joliels', `${tcpPort}`]
 		} else {
+			
 			command = 'npx'
-			args = ['--package=@jolie/languageserver@'+languageServerVersion, 'joliels', `${tcpPort}`]
+			args = ['--package=@jolie/languageserver@'+'1.1.6', 'joliels', `${tcpPort}`]
+			//args = ['joliels', `${tcpPort}`]
+			
+			/*
+			command = 'npm'
+			args = ['ls']
+			*/
+			
 		}
 
 		log(`starting "${command} ${args.join(' ')}"`)
-		proc = cp.spawn(command, args)
+		proc = cp.spawn(command, args, {
+			cwd: '/home/kasper/Documents/build/jolie/vscode-jolie',
+		})
 
 		proc.on("error", (err)=>{
 			log(`error: ${String(err)}`)
